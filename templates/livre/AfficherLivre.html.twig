@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>voici la liste des livres</h1>
+    <table border = "1">
+    <tr>
+    <th>title</th>
+    <th>author</th>
+    <th>nombre des pages</th>
+    <th>Picture</th>
+    <th>action</th>
+    </tr>
+    {% for l in Livre %}
+        
+    
+    <tr>
+    <td>{{ l.title }}</td>
+    <td>{{ l.author.getUsername() }}</td>
+    <td>{{ l.nbrPage }}</td>
+    <td>{{ l.picture }}</td>
+
+<td><a href="{{ path('delete_livre', {'id': l.getId()}) }}">Delete</a></td>
+<td><a href="{{ path('app_modifier_livre', {'id': l.getId()}) }}">Modifier</a></td>
+    {% endfor %}
+    </tr>
+    </table>
+</body>
+</html>

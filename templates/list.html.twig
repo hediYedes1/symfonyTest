@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <table border>
+            <tr>
+                <th>id</th>
+                <th>picture</th>
+                <th>username</th>
+                <th>email</th>
+                <th>nb_books</th>
+                <th>Actions</th>
+            </tr>
+            {% set totalBooks = 0 %}
+            {% for a in second %}
+            <tr>
+                <td>{{ a.id }}</td>
+                <td><img src="{{ asset(a.picture) }}" alt="{{ a.username }}"></td>
+                <td>{{ a.username|upper }}</td>
+                <td>{{ a.email }}</td>
+                <td>{{ a.nb_books }}</td>
+                <td><a href="{{ path('author_details', { 'id': a.id }) }}">details</a></td>
+            </tr>
+            {% set totalBooks = totalBooks + a.nb_books %}
+            {% endfor %}
+        </table>
+
+        <h1>Total Authors: {{ second|length }} </h1>
+        <h1>Total Books: {{ totalBooks }}</h1>
+    </body>
+</html>

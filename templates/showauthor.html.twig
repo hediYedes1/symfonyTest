@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ second.username }}</title>
+</head>
+<body>
+
+    <h1>{{ second.username }}</h1>
+    <p><strong>Email:</strong> {{ second.email }}</p>
+    <p><strong>Number of Books:</strong> {{ second.nb_books }}</p>
+    <img src="{{ asset(second.picture) }}" alt="{{ second.username }}">
+
+    <p><a href="{{ path('app_showlist') }}">Back to list</a></p>
+
+</body>
+</html>

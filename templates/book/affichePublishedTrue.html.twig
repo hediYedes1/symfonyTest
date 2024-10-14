@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Books</title>
+</head>
+<body>
+    <h1>List of Published Books</h1>
+    
+    {% if book is not empty %}
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Publication Date</th>
+            <th>Published</th>
+            <th>Author</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for b in book %}
+        {% if b.published %}
+        <tr>
+            <td>{{ b.title }}</td>
+            <td>{{ b.category }}</td>
+            <td>{{ b.publicationDate |date('Y-m-d H:i:s') }}</td>
+            <td>{{ b.published ? 'Yes' : 'No' }}</td>
+            <td>{{ b.author ? b.author.id : 'Unknown' }}</td>
+            <td><a href="{{ path('edit_book', {'id': b.ref, 'source': 'published'}) }}">Edit</a></td>
+            <td><a href="{{ path('delete_book', {'id': b.ref}) }}">Delete</a></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+    {% else %}
+    <h1>Pas de livre à afficher</h1>
+    {% endif %}
+    
+    <!-- Button to add a new book -->
+    <a href="{{ path('app_Addbook') }}">
+        <button>Create New Book</button>
+    </a>
+</body>
+</html>
